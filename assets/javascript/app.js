@@ -18,7 +18,7 @@ function displayShowInfo(){
 
         console.log(response);
 
-        var $div = $('<div>');
+        // var $div = $('<div>');
         var i = 0;
 
         var results = response.data;
@@ -27,68 +27,79 @@ function displayShowInfo(){
         for(i=0; i<results.length; i++) {
 
         still = results[i].images.fixed_height_still.url;
-        animater = results[i].images.fixed_height.url;
+        animate = results[i].images.fixed_height.url;
         
-        // var p = $('<p>').text('Rating: ' + $rating + '</p>');
+        
         var $rating = results[i].rating;
-        var rating = $('<p> Rating: ' + $rating + '</p>');
-        $div.append(rating);
+        var rating = $('<p>').text("Rating: " + $rating);
+        var localDiv = $('<div>');
+        localDiv.append(rating);
 
         console.log(rating);
 
-        // $(".gif").on("click", function() { 
-        //     var state = $(this).attr('data-state');
-        //     console.log(state);
-    
-        //     if (state === 'still') {
-        //       var dataAnimate = $(this).attr('data-animate');
-        //       $(this).attr('src', dataAnimate);
-        //       $(this).attr('data-state', 'animate');
-        //     } else {
-        //       var dataStill = $(this).attr('data-still');
-        //       $(this).attr('src', dataStill);
-        //       $(this).attr('data-state', 'still');
-    
-        //     }
-          
-
-
-
+        // var $container = $('.container');
+        
+        // $container.html(`
+        //     <div class="row">
+        //         <div class="col-sm">
+        //             Hello
+        //         </div>
+        //         <div class="col-sm">
+        //             Hello
+        //         </div>
+        //     </div>
+        // `);
+        
         $img = $('<img>');
         $img.attr('data-still', still);
         $img.attr('data-animate', animate);
         $img.attr('src', still);
         $img.attr('data-state', 'still');
-
-        $div.append($img);
-
-        $('#shows-view').append($div);
-        }
-
         
-
-    });
-
-}
-
-var gifAnimate = function(){
-    gifCondition = $(this).data('type');
-    still = $(this).data('still');
-    animate = $(this).data('animate');
-
-    if(gifCondition === 'still') {
-        $(this).attr('src', animate);
-        $(this).data('type', 'still');
-
-        console.log(gifCondition);
-
-    } else if(gifCondition === 'animate') {
-        $(this).attr('src', still);
-        $(this).data('type', 'still');
-
-        console.log(gifCondition);
+        localDiv.append($img);
+        // $div.append(localDiv);
+        $('#shows-view').append(localDiv);
     }
+    
+    $("img").on("click", function() { 
+        var state = $(this).attr('data-state');
+        console.log(state);
+    
+        if (state === 'still') {
+          var dataAnimate = $(this).attr('data-animate');
+          $(this).attr('src', dataAnimate);
+          $(this).attr('data-state', 'animate');
+        } else {
+          var dataStill = $(this).attr('data-still');
+          $(this).attr('src', dataStill);
+          $(this).attr('data-state', 'still');
+    
+        }
+    });
+    
+    
+});
+
 }
+
+// var gifAnimate = function(){
+//     gifCondition = $(this).data('type');
+//     still = $(this).data('still');
+//     animate = $(this).data('animate');
+
+//     if(gifCondition === 'still') {
+//         $(this).attr('src', animate);
+//         $(this).data('type', 'still');
+
+//         console.log(gifCondition);
+
+//     } else if(gifCondition === 'animate') {
+//         $(this).attr('src', still);
+//         $(this).data('type', 'still');
+
+//         console.log(gifCondition);
+//     }
+// }
 
 function renderButtons(){
     $('#buttons-view').empty();
@@ -99,6 +110,7 @@ function renderButtons(){
         a.attr('data-name', topics[i]);
         a.text(topics[i]);
         $('#buttons-view').append(a);
+        $('#tv-input').val('');
 
     }
 }
