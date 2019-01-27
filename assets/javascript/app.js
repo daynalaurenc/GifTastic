@@ -1,4 +1,4 @@
-var topics = ["Gossip Girl", "Grownish", "Pretty Little Liars", "13 Reasons Why", "Boy Meets World", "Degrassi", "Moesha", "Saved by the Bell"];
+var topics = ["Gossip Girl", "Grownish", "Pretty Little Liars", "13 Reasons Why", "Boy Meets World", "Degrassi", "Riverdale", "The Vampire Diaries", "American Vandal", "Friday Night Lights", "Saved by the Bell"];
 
 
 var app = $('#shows-view');
@@ -81,25 +81,6 @@ function displayShowInfo(){
 });
 
 }
-
-// var gifAnimate = function(){
-//     gifCondition = $(this).data('type');
-//     still = $(this).data('still');
-//     animate = $(this).data('animate');
-
-//     if(gifCondition === 'still') {
-//         $(this).attr('src', animate);
-//         $(this).data('type', 'still');
-
-//         console.log(gifCondition);
-
-//     } else if(gifCondition === 'animate') {
-//         $(this).attr('src', still);
-//         $(this).data('type', 'still');
-
-//         console.log(gifCondition);
-//     }
-// }
 
 function renderButtons(){
     $('#buttons-view').empty();
